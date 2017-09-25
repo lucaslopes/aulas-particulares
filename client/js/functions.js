@@ -8,13 +8,14 @@ function ajustaAltura() {
 }
 
 // Para designar para as páginas 'aluno' e 'professor' a depender
-// do chekbox selecionado no cadastro (não está funcionando)
+// do chekbox selecionado no cadastro
 $('#cadastrar').click(() => {
   event.preventDefault()
-  if ($('#inlineRadio1:checked'))
-    window.location.href = "aluno.html"
-  else if ($('#inlineRadio2:checked'))
-    window.location.href = "professor.html"
+
+  if ($('#inlineRadio1').is(':checked'))
+    window.location.href = "client/aluno.html"
+  if ($('#inlineRadio2').is(':checked'))
+    window.location.href = "client/professor.html"
 })
 
 // Tentativa de selecionar os horários com o clique
