@@ -1,5 +1,5 @@
 // Para não deixar o corpo da página embaixo da barra fixa
-$(window).ready(() => ajustaAltura())
+$(window).ready(ajustaAltura())
 $(window).resize(() => ajustaAltura())
 
 function ajustaAltura() {
@@ -9,14 +9,21 @@ function ajustaAltura() {
 
 // Para designar para as páginas 'aluno' e 'professor' a depender
 // do chekbox selecionado no cadastro
-$('#cadastrar').click(() => {
+$('#cadastrar').click(function() {
   event.preventDefault()
 
   if ($('#inlineRadio1').is(':checked'))
-    window.location.href = "client/aluno.html"
+    window.location.href = "aluno.html"
   if ($('#inlineRadio2').is(':checked'))
-    window.location.href = "client/professor.html"
+    window.location.href = "professor.html"
 })
 
-// Tentativa de selecionar os horários com o clique
-$('.horario').click(() => $(this).toggleClass('active'))
+// Ir para página inicial
+$('#titulo').click(function() {
+  window.location.href = "index.html"
+})
+
+// Selecionar os horários com o clique
+$(".horario").click(function() {
+  $(this).toggleClass('active')
+})
