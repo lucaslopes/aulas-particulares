@@ -1,0 +1,30 @@
+#titulo {
+  color: white;
+}
+
+#seletor {
+  background-color: white;
+  color: #0169D9;
+}
+
+.semana {
+  text-align: center;
+}
+
+.horario, #titulo {
+  cursor: pointer;
+}
+
+.login {
+  margin: 5px;
+}
+
+.corpo {
+  margin: 0 auto;
+}
+
+.cadastro {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+}
