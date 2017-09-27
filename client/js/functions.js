@@ -1,29 +1,44 @@
 // Para não deixar o corpo da página embaixo da barra fixa
-$(window).ready(ajustaAltura())
-$(window).resize(() => ajustaAltura())
+$(window).ready(setHeight())
+$(window).resize(() => setHeight())
 
-function ajustaAltura() {
+function setHeight() {
   let margem = $('nav').height()
   $('.corpo').css('margin-top', margem + 30)
 }
 
-// Para designar para as páginas 'aluno' e 'professor' a depender
-// do chekbox selecionado no cadastro
-$('#cadastrar').click(function() {
+// Selecionar os horários com o clique
+$('.horario').click(function() {
+  $(this).toggleClass('active')
+})
+
+// Incluir nova matéria
+$('#incluir').click(function() {
   event.preventDefault()
 
-  if ($('#inlineRadio1').is(':checked'))
-    window.location.href = "aluno.html"
-  if ($('#inlineRadio2').is(':checked'))
-    window.location.href = "professor.html"
+  if($('#inputMateria').val() == '') {
+    $('#inputMateria').addClass('is-invalid')
+    return false
+  }
+
+  let horarioSelecionado
+
+  $('.horario').each(function() {
+    if ($(this).hasClass('active'))
+      return horarioSelecionado = true
+  })
+
+  if (horarioSelecionado) {
+    $('#alertIncluido').show().delay(3000).fadeOut()
+    $('#inputMateria').val('')
+    $('.horario').each(function() {
+      if ($(this).hasClass('active'))
+        $(this).removeClass('active')
+    })
+  } else
+    $('#alertFaltaAula').show().delay(3000).fadeOut()
 })
 
-// Ir para página inicial
-$('#titulo').click(function() {
-  window.location.href = "index.html"
-})
-
-// Selecionar os horários com o clique
-$(".horario").click(function() {
-  $(this).toggleClass('active')
+$('#inputMateria').keyup(function() {
+  $('#inputMateria').removeClass('is-invalid')
 })

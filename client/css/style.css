@@ -1,3 +1,7 @@
+html {
+  height: auto
+}
+
 #titulo {
   color: white;
 }
@@ -27,4 +31,11 @@
   display: block;
   width: 100%;
   margin: 10px 0;
+}
+
+.alert {
+  position: absolute;
+  margin: 10px auto;
+  left: 40%;
+  display: inline-block;
 }
