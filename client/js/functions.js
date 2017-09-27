@@ -9,14 +9,15 @@ function setHeight() {
 
 // Selecionar os horários com o clique
 $('.horario').click(function() {
-  $(this).toggleClass('active')
+  if (!$(this).hasClass('disabled'))
+    $(this).toggleClass('active')
 })
 
 // Incluir nova matéria
 $('#incluir').click(function() {
   event.preventDefault()
 
-  if($('#inputMateria').val() == '') {
+  if ($('#inputMateria').val() == '') {
     $('#inputMateria').addClass('is-invalid')
     return false
   }
@@ -42,3 +43,26 @@ $('#incluir').click(function() {
 $('#inputMateria').keyup(function() {
   $('#inputMateria').removeClass('is-invalid')
 })
+
+$('#seletor').change(function() {
+  $('.horario').each(function() {
+    $(this).removeClass('active')
+    $(this).addClass('disabled')
+  })
+
+  $('.horario').each(function() {
+    let chance = Math.random()
+    if (chance < .25) {
+      $(this).toggleClass('disabled')
+    }
+  })
+})
+
+$('.horario').each(function() {
+  console.log('ta aqui');
+  if ($(this).hasClass('active')) {
+    $('#agendar').show()
+  }
+})
+// $('#agendar').hide()
+// })
